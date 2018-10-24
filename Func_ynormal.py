@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 #FUNCION PARA HALLAR LA ALTURA NORMAL DE UN CANAL TRAPEZOIDAL
 #USANDO NEWTON-RHAPSON (NR)
 
@@ -38,6 +39,7 @@ def ynormal(C_0, n, S, z, b, Q):        # Definicion de funcion ynormal
 # n= 0.013, talud lateral z = 1.25 (H:V), pendiente longigutudinal S= 0.32%,
 # ancho en la base b = 9.10 m, transporta un caudal Q = 38.53 m3/s.
 # Determinar la altura del flujo yn, para un estado de flujo uniforme.
+# Determinar la altura del flujo yc, para un estado de flujo uniforme.
 
 #Solucion
 Altura_normal = ynormal(1.0, 0.013, 0.32, 1.25, 9.10, 38.53)
