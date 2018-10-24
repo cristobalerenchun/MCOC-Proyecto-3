@@ -10,7 +10,6 @@
 # z   >>>  Relacion Horizontal/Vertical del talud
 # b   >>>  [m] Ancho del fondo del canal
 
-
 def ynormal(C_0, n, S, z, b, Q):        # Definicion de funcion ynormal
     yn = 1.0                            # Altura inicial para proceso interativo
     #Funcion de solucion
