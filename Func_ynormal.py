@@ -1,16 +1,17 @@
 #FUNCION PARA HALLAR LA ALTURA NORMAL DE UN CANAL TRAPEZOIDAL
 #USANDO NEWTON-RHAPSON (NR)
 
-# Q   >>>  [m^3*s^-1] Caudal que debe transportar la sección
-# C_0 >>>  [SI=>1 - SB=>1.49] Factor de conversión unidades
+# Q   >>>  [m^3*s^-1] Caudal que debe transportar la seccion
+# C_0 >>>  [SI=>1 - SB=>1.49] Factor de conversion unidades
 # n   >>>  [s*m^(-1/3)] Coeficiente rugosidad de Manning
 # S   >>>  [%] Pendiente longitudinal
-# z   >>>  Relación Horizontal/Vertical del talud
+# z   >>>  Relacion Horizontal/Vertical del talud
 # b   >>>  [m] Ancho del fondo del canal
+
 
 def ynormal(C_0, n, S, z, b, Q):        # Definicion de funcion ynormal
     yn = 1.0                            # Altura inicial para proceso interativo
-    #Funcion de solución
+    #Funcion de solucion
     def D(y):                           # Definicion de funcion argumento NR
         global A, P
         #Variables de calculo
@@ -28,7 +29,7 @@ def ynormal(C_0, n, S, z, b, Q):        # Definicion de funcion ynormal
     while tol > 1e-6:
         yn1 = yn - D(yn)                # Ecuacion de NR
         tol = abs(yn1-yn)               # Toleranacia del paso
-        yn  = yn1                       # Mutación de yn
+        yn  = yn1                       # Mutacion de yn
     return yn
 
 #APLICACION.
