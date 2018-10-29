@@ -21,9 +21,9 @@ def ycritical(q,b,z):
     def    d_F(q,b,z,y):                                                                      
             return ((y**2)*((b+y*z)**2)*(3*(b**2)+10*b*y*z+10*(y**2)*(z**2)))/((b+2*y*z)**2)  # Derivada total  f'(y)
     # Proceso de aproximaciones sucesivas
-    tol = abs(f(38.53,9.1,1.25,yc)/d_F(38.53,9.1,1.25,yc))          # Tolerancia itieracion 1
-    while tol > 1e-6 and d_F(38.53,9.1,1.25,yc)!=0:                 # Condiciones de NR
-        yc1 = yc - f(38.53,9.1,1.25,yc)/d_F(38.53,9.1,1.25,yc)      # Ecuacion de NR
+    tol = abs(f(q,b,z,yc)/d_F(q,b,z,yc))          # Tolerancia itieracion 1
+    while tol > 1e-6 and d_F(q,b,z,yc)!=0:                 # Condiciones de NR
+        yc1 = yc - f(q,b,z,yc)/d_F(q,b,z,yc)      # Ecuacion de NR
         tol = abs(yc1-yc)                                           # Toleranacia del paso
         yc  = yc1                                                   # Mutacion de yn
     return yc
