@@ -1,42 +1,37 @@
-#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 23 20:45:00 2018
 
-@author: jespildora
-"""
-#FUNCION PARA HALLAR LA ALTURA CRITICA DE UN CANAL TRAPEZOIDAL
-#USANDO NEWTON-RHAPSON (NR)
+#FUNCIÓN PARA HALLAR LA ALTURA CRITICA DE UN CANAL TRAPEZOIDAL
+#USANDO NEWTON-RAPHSON (NR)
 
-# Q   >>>  [m^3*s^-1] Caudal que debe transportar la seccion
-# z   >>>  Relacion Horizontal/Vertical del talud
+# Q   >>>  [m^3*s^-1] Caudal que debe transportar la sección
+# C_0 >>>  [SI=>1 - SB=>1.49] Factor de conversión unidades
+# z   >>>  Relación Horizontal/Vertical del talud
 # b   >>>  [m] Ancho del fondo del canal
 
-def ycritical(q,b,z):
-    yc=1.0                                                                                    # Altura inicial para proceso interativo    
-    def    f(q,b,z,y):                                                                        # Funcion solucion f(y)=0
-            A   = y*(b + z*y)                                                                 # [m^2] Area mojada
-            T   = b + 2*z*y                                                                   # [m] Perimetro Mojado
-            return ((A**3)/T)-((q**2)/9.81)                                                   # Funcion solucion f(y)=0
-    def    d_F(q,b,z,y):                                                                      
-            return ((y**2)*((b+y*z)**2)*(3*(b**2)+10*b*y*z+10*(y**2)*(z**2)))/((b+2*y*z)**2)  # Derivada total  f'(y)
+def ycritical(C_0, z, b, Q):       # Definición de función ycritical
+    yc = 1.0                       # Altura inicial para proceso iterativo
+    #Función de solución
+    def D(y):                      # Definición de función argumento NR
+        global A, P
+        #Variables de calculo
+        k   = Q**2/9.81            # [m^2*s] Constante del modelo 
+        A   = y*(b + z*y)          # [m^2] Área mojada
+        T   = b + 2*z*y            # [m] Derivada total de A respecto a y
+        d_T = 2*z                  # Derivada total de T respecto a y   
+        #Función solución y su derivada
+        f   = A**3 - k*T           # Función objetivo f(y) = 0
+        d_F = 3*A**2*T - k*d_T     # Derivada total  f'(y)
+        return f/d_F               # Segundo termino de ecuación de NR
     # Proceso de aproximaciones sucesivas
-    tol = abs(f(q,b,z,yc)/d_F(q,b,z,yc))          # Tolerancia itieracion 1
-    while tol > 1e-6 and d_F(q,b,z,yc)!=0:                 # Condiciones de NR
-        yc1 = yc - f(q,b,z,yc)/d_F(q,b,z,yc)      # Ecuacion de NR
-        tol = abs(yc1-yc)                                           # Toleranacia del paso
-        yc  = yc1                                                   # Mutacion de yn
+    tol = abs(D(yc))               # Tolerancia iteración 1
+    while tol > 1e-6:
+        yc1 = yc - D(yc)           # Ecuación de NR
+        tol = abs(yc1-yc)          # Tolerancia del paso
+        yc  = yc1                  # Mutación de yn
     return yc
 
-#APLICACION.
-# Un canal trapezoidal de seccion constante con un coeficiente de Manning
-# n= 0.013, talud lateral z = 1.25 (H:V), pendiente longigutudinal S= 0.32%,
-# ancho en la base b = 9.10 m, transporta un caudal Q = 38.53 m3/s.
-# Determinar la altura del flujo yc, para un estado de flujo uniforme.
-
-#Solucion
-
-#Altura_critica = ycritical(38.53,9.10,1.25)     #1
-#Altura_critica = ycritical(0.72,0.0,8.0)        #2
-Altura_critica = ycritical(0.15,0.50,0.0)        #3
-print "Altura critica yc =",Altura_critica,"m"          # Imprimiendo la solucion 
+#EJEMPLOS DE APLICACIÓN:
+#Solución
+print "Canal 1, yc =",ycritical(1.0, 1.25, 9.10, 38.53),"m"
+print "Canal 2, yc =",ycritical(1.0, 8.0, 0.0, 7.2),"m"
+print "Canal 3, yc =",ycritical(1.0, 0.0, 0.50, 0.15),"m"
