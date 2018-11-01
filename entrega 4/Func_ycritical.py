@@ -35,5 +35,8 @@ def ycritical(q,b,z):
 # Determinar la altura del flujo yc, para un estado de flujo uniforme.
 
 #Solucion
-Altura_critica = ycritical(38.53,9.10,1.25)
+
+#Altura_critica = ycritical(38.53,9.10,1.25)     #1
+#Altura_critica = ycritical(0.72,0.0,8.0)        #2
+Altura_critica = ycritical(0.15,0.50,0.0)        #3
 print "Altura critica yc =",Altura_critica,"m"          # Imprimiendo la solucion 

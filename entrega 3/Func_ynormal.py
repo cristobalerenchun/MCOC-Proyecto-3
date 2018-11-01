@@ -41,5 +41,10 @@ def ynormal(C_0, n, S, z, b, Q):        # Definición de función ynormal
 # Determinar la altura del flujo yc, para un estado de flujo uniforme.
 
 #Solución
-Altura_normal = ynormal(1.0, 0.013, 0.32, 1.25, 9.10, 38.53)
-print "Altura normal yn =",Altura_normal,"m"          # Imprimiendo la solución
+
+#Altura_normal = ynormal(1.0, 0.013, 0.32, 1.25, 9.10, 38.53) #1
+#Altura_normal = ynormal(1.0, 0.016, 0.26, 8.0, 0.0, 0.72) #2
+Altura_normal = ynormal(1.0, 0.009, 0.80, 0, 0.50, 0.15) #3
+
+print "Altura normal yn =",Altura_normal,"m"  
+        # Imprimiendo la solución
