@@ -19,32 +19,22 @@ def ynormal(C_0, n, S, z, b, Q):        # Definición de función ynormal
         k   = (10*Q*n/(C_0*S**0.5))**3  # [m^8] Constante del modelo hidráulico 
         A   = y*(b + z*y)               # [m^2] Área mojada
         P   = b + 2*y*(z**2+1)**0.5     # [m] Perímetro mojado
-        d_A = b + 2*z*y                 # [m] Derivada total de A respecto a y
+        T   = b + 2*z*y                 # [m] Derivada total de A respecto a y
         d_P = 2*(z**2+1)**0.5           # Derivada total de P respecto a y   
         #Función solución y su derivada
-        f   = A**5-k*P**2               # Función solución f(y)=0
-        d_F = 5*A**4*d_A - 2*k*P*d_P    # Derivada total  f'(y)
+        f   = A**5 - k*P**2             # Función objetivo f(y)=0
+        d_F = 5*A**4*T - 2*k*P*d_P    # Derivada total  f'(y)
         return f/d_F                    # Segundo termino de ecuación de NR
     # Proceso de aproximaciones sucesivas
     tol = abs(D(yn))                    # Tolerancia iteración 1
     while tol > 1e-6:
         yn1 = yn - D(yn)                # Ecuación de NR
-        tol = abs(yn1-yn)               # Tolerancia del paso
+        tol = abs(yn1 - yn)             # Tolerancia del paso
         yn  = yn1                       # Mutación de yn
     return yn
 
-#APLICACIÓN.
-# Un canal trapezoidal de sección constante con un coeficiente de Manning
-# n= 0.013, talud lateral z = 1.25 (H:V), pendiente longitudinal S= 0.32%,
-# ancho en la base b = 9.10 m, transporta un caudal Q = 38.53 m3/s.
-# Determinar la altura del flujo yn, para un estado de flujo uniforme.
-# Determinar la altura del flujo yc, para un estado de flujo uniforme.
-
+#EJERCICIOS DE APLICACIÓN.
 #Solución
-
-#Altura_normal = ynormal(1.0, 0.013, 0.32, 1.25, 9.10, 38.53) #1
-#Altura_normal = ynormal(1.0, 0.016, 0.26, 8.0, 0.0, 0.72) #2
-Altura_normal = ynormal(1.0, 0.009, 0.80, 0, 0.50, 0.15) #3
-
-print "Altura normal yn =",Altura_normal,"m"  
-        # Imprimiendo la solución
+print "Canal 1, Altura normal yn =",ynormal(1.0, 0.013, 0.32, 1.25, 9.10, 38.53),"m"
+print "Canal 2, Altura normal yn =",ynormal(1.0, 0.016, 0.26, 8.00, 0.0, 0.72),"m"
+print "Canal 3, Altura normal yn =",ynormal(1.0, 0.009, 0.80, 0.00, 0.50, 0.15),"m"
