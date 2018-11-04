@@ -36,5 +36,5 @@ def ynormal(C_0, n, S, z, b, Q):        # Definición de función ynormal
 #EJERCICIOS DE APLICACIÓN.
 #Solución
 print "Canal 1, Altura normal yn =",ynormal(1.0, 0.013, 0.32, 1.25, 9.10, 38.53),"m"
-print "Canal 2, Altura normal yn =",ynormal(1.0, 0.016, 0.26, 8.00, 0.0, 0.72),"m"
+print "Canal 2, Altura normal yn =",ynormal(1.0, 0.016, 0.26, 8.00, 0.0, 7.2),"m"
 print "Canal 3, Altura normal yn =",ynormal(1.0, 0.009, 0.80, 0.00, 0.50, 0.15),"m"
