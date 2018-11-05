@@ -8,7 +8,7 @@
 # z   >>>  Relación Horizontal/Vertical del talud
 # b   >>>  [m o pie] Ancho del fondo del canal
 
-def ycritical(C_0, z, b, Q):       # Definición de función ycritical
+def ycritical(Units, z, b, Q):       # Definición de función ycritical
     yc = 1.0                       # Altura inicial para proceso iterativo
      #Condición del sistema de unidades (SI o SB)
     if Units == "SI":
