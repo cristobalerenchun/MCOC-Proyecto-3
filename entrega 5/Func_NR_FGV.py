@@ -53,7 +53,7 @@ def NR_FGV(units, b, z, y1, n, Q, S, dx):
 		st2 = geom(b, z, y2)						        # Parámetros geométricos sección 2
 		hd2 = hidr(units, b, z, y2, n, Q, S, st2['T'], st2['A'], st2['R'])	# Parámetros hidráulicos sección 2
 		# Función objetivo y primera derivada total:
-		f   = hd2['E'] - hd1['E'] + 0.5*(hd2['Sf'] + hd1['Sf'] - 2*S)*dx    # f(y2)=0
+		f   = hd2['E'] - hd1['E'] + 0.5*(hd2['Sf'] + hd1['Sf'] - 2.*S)*dx       # f(y2)=0
 		df  = math.cos(theta)**2. - alpha*hd2['Fr']**2. - dx*hd2['Sf']*(5.*st2['T'] - 2.*st2['dP/dy']/st2['R'])/3.
 		# Proceso de aproximaciones sucesivas:
 		y_i = y2 - f/df					# Formula de NR
