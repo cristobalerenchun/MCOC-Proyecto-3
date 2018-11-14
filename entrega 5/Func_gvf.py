@@ -23,7 +23,7 @@ from Func_NR_FGV  import NR_FGV
 from Func_ynormal import ynormal
 # Argumentos = ynormal(units, n, S, z, b, Q)
 
-def FGV(units, b, z, n, Q, S, dx, control, y_control, elev_control):
+def gvf(units, b, z, n, Q, S, dx, control, y_control, elev_control):
 	global X, Z
 	yn = ynormal(units, n, S, z, b, Q)			# Altura normal yn
 	# Valores iniciales de los vectores:
