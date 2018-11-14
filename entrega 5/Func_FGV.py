@@ -4,21 +4,21 @@
 # FLUJO GRADUALMENTE VARIADO (FGV) DE UNA SECCIÓN TRAPEZOIDAL SIMÉTRICA GENERAL
 
 # Argumentos de la función:
-# units 	 >>> [SI=> Sistema internacional - SB=> Sistema británico]
-# b     	 >>> [m o pie] Ancho del fondo del canal
-# z     	 >>> Relación Horizontal/Vertical del talud lateral
-# n     	 >>> [s*m^(-1/3) o pie^3*s^-1] Coeficiente rugosidad de Manning
-# Q     	 >>> [m^3*s^-1 o pie^3*s^-1] Caudal permanente que transporta el canal
-# S     	 >>> [m/m o pie/pie] Pendiente longitudinal del canal
-# dx    	 >>> [m o pie] Longitud del paso estándar
-# control 	 >>> [DS=> Aguas abajo ó US => Aguas arriba] Ubicación del control de flujo
-# y     	 >>> [m o pie] Profundidad del agua en la sección de control (Altura conocida)
+# units      >>> [SI=> Sistema internacional - SB=> Sistema británico]
+# b          >>> [m o pie] Ancho del fondo del canal
+# z          >>> Relación Horizontal/Vertical del talud lateral
+# n          >>> [s*m^(-1/3) o pie^3*s^-1] Coeficiente rugosidad de Manning
+# Q          >>> [m^3*s^-1 o pie^3*s^-1] Caudal permanente que transporta el canal
+# S          >>> [m/m o pie/pie] Pendiente longitudinal del canal
+# dx         >>> [m o pie] Longitud del paso estándar
+# control    >>> [DS=> Aguas abajo ó US => Aguas arriba] Ubicación del control de flujo
+# y          >>> [m o pie] Profundidad del agua en la sección de control (Altura conocida)
 # elev_control > [m o pie] Elevación en la sección de control
 
 # Funciones auxiliares:
 from numpy        import array
-from matplotlib import pyplot
-from Func_NR_FGV import NR_FGV
+from matplotlib   import pyplot
+from Func_NR_FGV  import NR_FGV
 # Argumentos = NR_FGV(units, b, z, y1, n, Q, S, dx, control)
 from Func_ynormal import ynormal
 # Argumentos = ynormal(units, n, S, z, b, Q)
