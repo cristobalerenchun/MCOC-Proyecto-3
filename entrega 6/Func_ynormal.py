@@ -12,7 +12,7 @@
 # Q     >>>  [m^3*s^-1 o pie^3*s^-1] Caudal que debe transportar la sección
 
 from Func_ycritical import ycritical
-# Argumentos función = ycritical(units, z, b, Q)
+    # Argumentos = (units, z, b, Q)
 
 # FUNCIÓN PRINCIPAL
 def ynormal(units, n, S, z, b, Q):
