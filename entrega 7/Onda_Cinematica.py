@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Nov 18 10:56:32 2018
-
-@author: erenchun
+Created on the space
 """
 import numpy as np
 import scipy as sp
