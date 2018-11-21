@@ -109,6 +109,7 @@ if und == 'SI':
 else:
     dimen = 'pies'
     fluj  = '(pies cubicos)/s'
+
 # Imprimiendo:
 class SubplotAnimation(animation.TimedAnimation):
     def __init__(self):
@@ -159,5 +160,6 @@ class SubplotAnimation(animation.TimedAnimation):
         large = range(nk-1)
         
         return iter(large)
+
 anim = SubplotAnimation()
 plt.show()
